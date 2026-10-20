@@ -1,0 +1,71 @@
+personal:
+  name: "Βασιλική Πετράκη"
+  title: "Computer Software Engineer"
+  photo: "vp_photo.jpg"
+  email: "std172766@ac.eap.gr"
+  phone: "6937569904"
+  linkedin: "https://www.linkedin.com/in/vasiliki-petraki-209b75385"
+
+profile: >-
+  Εμπειρία σε ανάπτυξη και υποστήριξη πληροφοριακών συστημάτων,
+  SAP/ABAP4, Cobol, VB.net, PLSQL, μισθοδοσία νοσοκομείων
+  και κυβερνοασφάλεια.
+
+experience:
+  - position: "Computer Software Engineer"
+    organization: "Ρυθμιστική Αρχή Σιδηροδρόμων (ΡΑΣ)"
+    employment_type: "Πλήρης απασχόληση"
+    period: "Απρίλιος 2026 – Παρόν"
+    location: "Αθήνα"
+    department: "Τμήμα Ασφάλειας Σιδηροδρόμων"
+    description: >-
+      Ανάλυση, ανάπτυξη και υποστήριξη πληροφοριακών συστημάτων
+      που υποστηρίζουν την εποπτεία της ασφάλειας του σιδηροδρομικού τομέα.
+      Μέλος ομάδας που χειρίζεται θέματα κυβερνοασφάλειας
+      και προστασίας κρίσιμων υποδομών.
+
+  - position: "Computer Software Engineer"
+    organization: "ΗΔΥΚΑ"
+    employment_type: "Πλήρης απασχόληση"
+    period: "Δεκέμβριος 2005 – Μάρτιος 2026"
+    location: "Αθήνα"
+    description: >-
+      Υπεύθυνη Προγραμμάτων Μισθοδοσίας Νοσοκομείων.
+      Συμμετοχή στην παρακολούθηση και παραλαβή έργων πληροφορικής,
+      καθώς και στην υποστήριξη και εξέλιξη πληροφοριακών συστημάτων
+      του οργανισμού.
+
+  - position: "Junior Software Engineer SAP/ABAP4"
+    organization: "Εθνoplan A.E."
+    employment_type: "Πλήρης απασχόληση"
+    period: "Μάρτιος 2004 – Νοέμβριος 2005"
+    location: "Αθήνα"
+
+  - position: "Junior Software Engineer SAP/ABAP4"
+    organization: "Info Quest A.E."
+    employment_type: "Πλήρης απασχόληση"
+    period: "Δεκέμβριος 2001 – Φεβρουάριος 2004"
+    location: "Καλλιθέα"
+
+education:
+  - institution: "Ελληνικό Ανοικτό Πανεπιστήμιο"
+    degree: "Μεταπτυχιακό, Συστήματα Διάχυτου Υπολογισμού"
+    period: "2025 – 2028"
+
+  - institution: "Ελληνικό Ανοικτό Πανεπιστήμιο"
+    degree: "Πτυχίο, Πληροφορική"
+    period: "2012 – 2019"
+
+  - institution: "Τεχνολογικό Εκπαιδευτικό Ίδρυμα Αθήνας"
+    degree: "Πτυχίο, Πληροφορική"
+    period: "1998 – 2002"
+
+skills:
+  - "SAP/ABAP4"
+  - "VB.net"
+  - "PLSQL"
+  - "Cobol"
+  - "Git & GitHub"
+  - "HTML/CSS"
+  - "ISO 9001:2015 Lead Auditor (από 06/2026)"
+  - "Ομαδική Συνεργασία"
