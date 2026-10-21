@@ -62,9 +62,9 @@ jobs:
 
       - name: Copy PDF to website
         run: |
-          cp VasilikiPetraki.pdf _site/
+          sudo cp VasilikiPetraki.pdf _site/
           test -s _site/VasilikiPetraki.pdf
-
+          
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
