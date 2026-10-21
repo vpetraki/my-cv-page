@@ -1,20 +1,24 @@
 
-name: Build CV PDF
+name: Build and deploy CV website
 
 on:
-  workflow_dispatch:
-
   push:
     branches:
       - main
-    paths:
-      - '_data/cv.yml'
-      - 'build_cv.py'
-      - '.github/workflows/build.yml'
-      - 'vp_photo.jpg'
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: cv-pages
+  cancel-in-progress: false
 
 jobs:
-  build-pdf:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -39,17 +43,48 @@ jobs:
             texlive-fonts-recommended \
             fonts-liberation
 
-      - name: Generate PDF
+      - name: Generate CV PDF
         env:
           CV_FONT: Liberation Sans
         run: python build_cv.py
 
-      - name: Verify PDF
+      - name: Verify generated PDF
         run: test -s VasilikiPetraki.pdf
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build Jekyll website
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Copy PDF to website
+        run: |
+          cp VasilikiPetraki.pdf _site/
+          test -s _site/VasilikiPetraki.pdf
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: VasilikiPetraki-PDF
           path: VasilikiPetraki.pdf
-          if-no-files-found: error
+
+      - name: Upload website artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
