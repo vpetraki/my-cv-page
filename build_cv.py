@@ -4,6 +4,7 @@ Run from anywhere: python build_cv.py
 """
 from pathlib import Path
 import subprocess
+import os
 import yaml
 
 ROOT = Path(__file__).resolve().parent
@@ -111,7 +112,8 @@ subprocess.run([
     'pandoc', str(MARKDOWN), '-f', 'markdown+raw_tex', '-o', str(PDF),
     '--pdf-engine=xelatex', '--include-in-header', str(HEADER),
     '-V', 'geometry:a4paper,margin=1.65cm',
-    '-V', 'mainfont=Arial', '-V', 'lang=el-GR',
+    '-V', f"mainfont={os.environ.get('CV_FONT', 'Arial')}",
+    '-V', 'lang=el-GR',
     '-V', 'fontsize=10pt',
 ], cwd=ROOT, check=True)
 print(f'PDF created: {PDF}')
