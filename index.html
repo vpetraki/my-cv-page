@@ -56,11 +56,31 @@ layout: null
       .container { padding: 20px; }
       .profile-section { flex-direction: column; align-items: flex-start; }
     }
+    .pdf-button {
+    display: inline-block;
+    background: #005a8d;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.pdf-button:hover {
+    background: #003f63;
+}
   </style>
 </head>
 <body>
 <div class="container">
   <h1>{{ cv.personal.name | escape }} – Βιογραφικό</h1>
+  
+  <a href="{{ '/VasilikiPetraki.pdf' | relative_url }}"
+   class="pdf-button"
+   download="VasilikiPetraki.pdf">
+    Λήψη βιογραφικού σε PDF 
+  </a>
 
   <div class="profile-section">
     <img src="{{ cv.personal.photo | relative_url }}" alt="Φωτογραφία βιογραφικού">
