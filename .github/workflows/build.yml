@@ -1,0 +1,55 @@
+
+name: Build CV PDF
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+    paths:
+      - '_data/cv.yml'
+      - 'build_cv.py'
+      - '.github/workflows/build.yml'
+      - 'vp_photo.jpg'
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: python -m pip install PyYAML
+
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            pandoc \
+            texlive-xetex \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            fonts-liberation
+
+      - name: Generate PDF
+        env:
+          CV_FONT: Liberation Sans
+        run: python build_cv.py
+
+      - name: Verify PDF
+        run: test -s VasilikiPetraki.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VasilikiPetraki-PDF
+          path: VasilikiPetraki.pdf
+          if-no-files-found: error
